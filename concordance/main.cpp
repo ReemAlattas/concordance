@@ -14,10 +14,15 @@
 
 using namespace std;
 
-//Converts string to lowercase & Remove punctuation
-void toLower (string& str) {
+//Convert string to lowercase & Remove punctuation & Count no. of sentences
+void analyzeText(string& str, int& sentCount) {
     for (int i=0; i < str.length(); i++)
-        str [i] = tolower(str[i]);
+    {
+        if(str[i] == '.' || str[i] == '?' || str[i] == '!'){
+            sentCount++;
+        }
+        str[i] = tolower(str[i]);
+    }
     str.erase(remove_if(str.begin (), str.end (), ::ispunct), str.end ());
 }
 
@@ -25,6 +30,9 @@ void toLower (string& str) {
 int main(int argc, const char * argv[]) {
     
     ifstream myFile;
+    string word;
+    map <string, int> wordCount;
+    int sentCount = 0;
     
     //open file
     myFile.open ("english.txt");
@@ -37,20 +45,16 @@ int main(int argc, const char * argv[]) {
     
     //cout << "File Opened Successfully!\n";
     
-    string word;
-    map <string, int> wordCount;
-    
     while (myFile >> word)
     {
-        toLower(word);
+        analyzeText(word, sentCount);
         wordCount[word]++;
     }
     
     for (map<string,int>::iterator it=wordCount.begin(); it!=wordCount.end(); ++it)
         std::cout << it->first << " => " << it->second << '\n';
     
-    
-//    cout << word << " " << wordCount[word] << endl;
+    cout << "No of Sentences = " << sentCount << endl;
     
     myFile.close();
     return 0;
