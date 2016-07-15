@@ -13,10 +13,17 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     
-    ofstream myfile;
-    myfile.open ("english.txt");
-    myfile << "Writing this to a file.\n";
-    myfile.close();
+    ofstream myFile;
+    myFile.open ("english.txt");
+    
+    if (!myFile)
+    {
+        cerr << "File could not be opened!" << endl;
+        exit (1);
+    }
+    
+    myFile << "Writing this to a file.\n";
+    myFile.close();
     
     return 0;
 }
