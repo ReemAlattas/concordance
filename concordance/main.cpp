@@ -13,7 +13,7 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     
-    ofstream myFile;
+    ifstream myFile;
     myFile.open ("english.txt");
     
     if (!myFile)
@@ -22,8 +22,10 @@ int main(int argc, const char * argv[]) {
         exit (1);
     }
     
-    myFile << "Writing this to a file.\n";
-    myFile.close();
+    char word[30];
+    
+    while (myFile >> word)
+        cout << word << "\n";
     
     return 0;
 }
