@@ -13,9 +13,18 @@
 
 using namespace std;
 
+//Funtion converts string to lowercase
+void toLower (string& str) {
+    for (int i=0; i < str.length(); i++)
+        str [i] = tolower(str[i]);
+}
+
+//main
 int main(int argc, const char * argv[]) {
     
     ifstream myFile;
+    
+    //open file
     myFile.open ("english.txt");
     
     if (!myFile)
@@ -24,10 +33,21 @@ int main(int argc, const char * argv[]) {
         exit (1);
     }
     
-    map <string, int> wordCount;
+    cout << "File Opened Successfully!\n";
+    
+    string word;
+    //map <string, int> wordCount;
+    
+    while (myFile >> word)
+    {
+        toLower(word);
+        cout << word << " ";
+//        wordCount[word]++;
+    }
     
     
-        
+//    cout << word << " " << wordCount[word] << endl;
     
+    myFile.close();
     return 0;
 }
