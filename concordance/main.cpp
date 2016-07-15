@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstring>
+#include <map>
 
 using namespace std;
 
@@ -22,10 +24,10 @@ int main(int argc, const char * argv[]) {
         exit (1);
     }
     
-    char word[30];
+    map <string, int> wordCount;
     
-    while (myFile >> word)
-        cout << word << "\n";
+    
+        
     
     return 0;
 }
