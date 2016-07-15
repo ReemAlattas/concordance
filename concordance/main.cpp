@@ -35,17 +35,19 @@ int main(int argc, const char * argv[]) {
         exit (1);
     }
     
-    cout << "File Opened Successfully!\n";
+    //cout << "File Opened Successfully!\n";
     
     string word;
-    //map <string, int> wordCount;
+    map <string, int> wordCount;
     
     while (myFile >> word)
     {
         toLower(word);
-        cout << word << " ";
-//        wordCount[word]++;
+        wordCount[word]++;
     }
+    
+    for (map<string,int>::iterator it=wordCount.begin(); it!=wordCount.end(); ++it)
+        std::cout << it->first << " => " << it->second << '\n';
     
     
 //    cout << word << " " << wordCount[word] << endl;
