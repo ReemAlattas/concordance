@@ -8,15 +8,17 @@
 
 #include <iostream>
 #include <fstream>
-#include <cstring>
+#include <string>
+#include <algorithm>
 #include <map>
 
 using namespace std;
 
-//Funtion converts string to lowercase
+//Converts string to lowercase & Remove punctuation
 void toLower (string& str) {
     for (int i=0; i < str.length(); i++)
         str [i] = tolower(str[i]);
+    str.erase(remove_if(str.begin (), str.end (), ::ispunct), str.end ());
 }
 
 //main
